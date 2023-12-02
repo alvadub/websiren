@@ -1,0 +1,306 @@
+<!doctype html>
+<html manifest="siren.appcache">
+  <head>
+    <meta charset="utf-8" />
+    <title>ALVADUB / WEB SIREN</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <symbol id="play-sound">
+        <path d="M11.553 3.064A.75.75 0 0 1 12 3.75v16.5a.75.75 0 0 1-1.255.555L5.46 16H2.75A1.75 1.75 0 0 1 1 14.25v-4.5C1 8.784 1.784 8 2.75 8h2.71l5.285-4.805a.752.752 0 0 1 .808-.13ZM10.5 5.445l-4.245 3.86a.748.748 0 0 1-.505.195h-3a.25.25 0 0 0-.25.25v4.5c0 .138.112.25.25.25h3c.187 0 .367.069.505.195l4.245 3.86Zm8.218-1.223a.75.75 0 0 1 1.06 0c4.296 4.296 4.296 11.26 0 15.556a.75.75 0 0 1-1.06-1.06 9.5 9.5 0 0 0 0-13.436.75.75 0 0 1 0-1.06Z" />
+        <path d="M16.243 7.757a.75.75 0 1 0-1.061 1.061 4.5 4.5 0 0 1 0 6.364.75.75 0 0 0 1.06 1.06 6 6 0 0 0 0-8.485Z" />
+      </symbol>
+      <symbol id="stop-sound" viewBox="0 0 24 24">
+        <path d="M12 7a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 12 7Zm0 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
+        <path d="M7.328 1.47a.749.749 0 0 1 .53-.22h8.284c.199 0 .389.079.53.22l5.858 5.858c.141.14.22.33.22.53v8.284a.749.749 0 0 1-.22.53l-5.858 5.858a.749.749 0 0 1-.53.22H7.858a.749.749 0 0 1-.53-.22L1.47 16.672a.749.749 0 0 1-.22-.53V7.858c0-.199.079-.389.22-.53Zm.84 1.28L2.75 8.169v7.662l5.419 5.419h7.662l5.419-5.418V8.168L15.832 2.75Z" />
+      </symbol>
+      </symbol>
+      <symbol id="sine-wave">
+        <path d="M16.5 21c-3 0-4.19-4.24-5.45-8.72C10.14 9.04 9 5 7.5 5 4.11 5 4 11.93 4 12H2c0-.37.06-9 5.5-9 3 0 4.21 4.25 5.47 8.74C13.83 14.8 15 19 16.5 19c3.44 0 3.53-6.93 3.53-7h2c0 .37-.06 9-5.53 9Z" />
+      </symbol>
+      <symbol id="square-wave"><path d="M2 2v10h2V4h7v18h11V12h-2v8h-7V2H2Z" /></symbol>
+      <symbol id="triangle-wave"><path d="m22 12-5 10L7.1 6.04 4.24 12H2L7 2l9.9 15.96L19.76 12H22Z" /></symbol>
+      <symbol id="sawtooth-wave"><path d="M11 22V6.83L2 16v-2.83L13 2v15.17L22 8v2.83L11 22Z" /></symbol>
+    </svg>
+    <small>v0.1.0-rc1</small>
+    <div>
+      <div class="md-flex flex-gap flex-auto">
+        <div>
+          <div class="theme-prefs">
+            <label>
+              <input type="file" tabindex="-1" accept="image/*" />
+              <img id="logo" src="alvadub.png" alt="ALVADUB" />
+            </label>
+            <details class="color-preference">
+              <summary class="color-choice color-selector"></summary>
+              <div class="dropdown" id="colors">
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#5700B0" />
+                  <span style="background-color:#5700B0"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#8A22FF" />
+                  <span style="background-color:#8A22FF"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#06A9FC" />
+                  <span style="background-color:#06A9FC"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#2AF7FF" />
+                  <span style="background-color:#2AF7FF"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#860B7A" />
+                  <span style="background-color:#860B7A"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#FF0101" />
+                  <span style="background-color:#FF0101"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#F94C10" />
+                  <span style="background-color:#F94C10"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#FF9818" />
+                  <span style="background-color:#FF9818"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#027169" />
+                  <span style="background-color:#027169"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#2D944A" />
+                  <span style="background-color:#2D944A"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#FCEF21" />
+                  <span style="background-color:#FCEF21"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#07FF06" />
+                  <span style="background-color:#07FF06"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#525252" />
+                  <span style="background-color:#525252"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#92949C" />
+                  <span style="background-color:#92949C"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="#F4F5F8" />
+                  <span style="background-color:#F4F5F8"></span>
+                </label>
+                <label class="color-choice">
+                  <input type="radio" name="scheme" value="" />
+                  <span class="default"></span>
+                </label>
+              </div>
+            </details>
+            <button id="reset">&times;</button>
+          </div>
+          <hr />
+          <canvas id="canvas"></canvas>
+          <hr />
+          <div class="patch-selection param-group flex flex-center">
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="1">
+              <span>1</span>
+            </label>
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="2">
+              <span>2</span>
+            </label>
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="3">
+              <span>3</span>
+            </label>
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="4">
+              <span>4</span>
+            </label>
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="5">
+              <span>5</span>
+            </label>
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="6">
+              <span>6</span>
+            </label>
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="7">
+              <span>7</span>
+            </label>
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="8">
+              <span>8</span>
+            </label>
+            <label class="input-toggle">
+              <input type="radio" name="patch" value="9">
+              <span>9</span>
+            </label>
+          </div>
+          <hr />
+          <span class="flex flex-center">
+            <span>
+              <button id="trigger">
+                <svg width="24" height="24">
+                  <use xlink:href="#play-sound"></use>
+                </svg>
+              </button>
+            </span>
+            <input name="volume" min="0" max="1" step="0.01" value="0.8" type="range" />
+          </span>
+        </div>
+        <hr />
+        <div class="flex-auto">
+          <div class="param-group">
+            <h3>LFO</h3>
+            <div class="flex flex-between">
+              <label class="flex-auto">
+                <input name="modulationFrequency" min="0.1" max="2" step="0.1" value="1" type="range" />
+              </label>
+              <label class="flex-auto">
+                <input name="modulationAmplitude" min="1" max="500" step="1" value="200" type="range" />
+              </label>
+              <span class="flex">
+                <label class="input-toggle">
+                  <input type="radio" name="modulationOscillatorType" value="sine" checked />
+                  <svg width="24" height="24">
+                    <use xlink:href="#sine-wave"></use>
+                  </svg>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="modulationOscillatorType" value="square" />
+                  <svg width="24" height="24">
+                    <use xlink:href="#square-wave"></use>
+                  </svg>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="modulationOscillatorType" value="triangle" />
+                  <svg width="24" height="24">
+                    <use xlink:href="#triangle-wave"></use>
+                  </svg>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="modulationOscillatorType" value="sawtooth" />
+                  <svg width="24" height="24">
+                    <use xlink:href="#sawtooth-wave"></use>
+                  </svg>
+                </label>
+              </span>
+            </div>
+          </div>
+          <hr />
+          <div class="param-group">
+            <h3>ECHO</h3>
+            <div class="flex flex-between">
+              <label class="flex-auto">
+                <input name="delayTime" min="0.1" max="1" step="0.01" value="0.5" type="range" />
+              </label>
+              <div class="flex">
+                <label class="input-toggle">
+                  <input type="radio" name="delayFactor" value="0.25" />
+                  <span>¼</span>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="delayFactor" value="0.5" />
+                  <span>½</span>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="delayFactor" value="0.75" />
+                  <span>¾</span>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="delayFactor" checked value="1" />
+                  <span>1</span>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="delayFactor" value="1.5">
+                  <span>³/₂</span>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="delayFactor" value="2" />
+                  <span>2</span>
+                </label>
+              </div>
+            </div>
+            <hr />
+            <div class="flex flex-between">
+              <label class="flex-auto">
+                <input name="delayFeedback" min="0" max="1" step="0.01" value="0.4" type="range" />
+              </label>
+              <label class="flex-auto">
+                <input name="delayCutoffFrequency" min="1000" max="10000" step="10" value="2000" type="range" />
+              </label>
+            </div>
+          </div>
+          <hr />
+          <div class="param-group">
+            <h3>CARRIER</h3>
+            <div class="flex flex-between">
+              <label class="flex-auto">
+                <input name="mainFrequency" max="1000" min="40" step="1" value="400" type="range" />
+              </label>
+              <span class="flex">
+                <label class="input-toggle">
+                  <input type="radio" name="mainOscillatorType" value="sine">
+                  <svg width="24" height="24">
+                    <use xlink:href="#sine-wave"></use>
+                  </svg>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="mainOscillatorType" value="square" checked />
+                  <svg width="24" height="24">
+                    <use xlink:href="#square-wave"></use>
+                  </svg>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="mainOscillatorType" value="triangle">
+                  <svg width="24" height="24">
+                    <use xlink:href="#triangle-wave"></use>
+                  </svg>
+                </label>
+                <label class="input-toggle">
+                  <input type="radio" name="mainOscillatorType" value="sawtooth">
+                  <svg width="24" height="24">
+                    <use xlink:href="#sawtooth-wave"></use>
+                  </svg>
+                </label>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <button id="disrupt">
+        <svg width="48" height="48">
+          <use xlink:href="#stop-sound"></use>
+        </svg>
+      </button>
+    </div>
+    <script src="siren.js"></script>
+    <script>
+      if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
+        window.addEventListener('load', () => {
+          window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault();
+            event.prompt();
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

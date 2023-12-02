@@ -1,0 +1,293 @@
+* {
+  margin: 0;
+  padding: 0;
+  xoutline: 1px dashed cyan;
+}
+:root {
+  --scheme-color: #aaff00;
+}
+html {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+html, body {
+  height: 100%;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  background-color: black;
+  user-select: none;
+  padding: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+hr {
+  border: none;
+  margin: 10px 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+svg {
+  fill: currentColor;
+}
+small {
+  position: absolute;
+  text-align: center;
+  color: gray;
+  bottom: 5px;
+  left: 5px;
+}
+
+@media screen and (min-width: 960px) {
+  .md-flex {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.flex {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+.flex-gap {
+  gap: 20px;
+}
+.flex-auto {
+  flex: 1 0 auto;
+}
+.flex-center {
+  justify-content: center;
+}
+.flex-between {
+  justify-content: space-between;
+}
+
+.patch-selection .input-toggle > input + span {
+  text-shadow: 1px 1px 1px black, 2px 2px 1px gray;
+}
+.patch-selection .input-toggle > input + * {
+  font-size: 32px;
+}
+
+.input-toggle {
+  color: gray;
+  border-radius: 20px;
+  display: inline-flex;
+}
+.input-toggle > input + * {
+  color: gray;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 24px;
+  text-align: center;
+}
+.input-toggle > input { opacity: 0; position: absolute; }
+.input-toggle > input + span {
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+.input-toggle > input:focus + * {
+  box-shadow: 0 0 20px var(--scheme-color);
+}
+.input-toggle > input:checked + * {
+  background-color: rgba(255, 255, 255, .2);
+  text-shadow: 1px 1px 3px black !important;
+  border-radius: 20px;
+  color: white;
+  fill: white;
+}
+
+.param-group h3 {
+  color: gray;
+  text-align: right;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 1px black, 2px 2px 1px gray;
+}
+
+.dropdown {
+  z-index: 1;
+  padding: 10px;
+  position: absolute;
+  border-radius: 15px;
+  background-color: black;
+  box-shadow: 0 0 20px var(--scheme-color);
+}
+.color-choice {
+  width: 30px;
+  height: 30px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 15px;
+  display: inline-block;
+}
+.color-choice span {
+  display: block;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+}
+.color-choice input {
+  position: absolute;
+  opacity: 0;
+}
+.color-choice .default {
+  border: 1px dashed white;
+}
+.color-choice input:checked + span {
+  box-shadow: 0 0 20px var(--scheme-color);
+}
+
+.theme-prefs {
+  position: relative;
+  display: block;
+  width: 210px;
+  margin: auto;
+}
+.theme-prefs input[type=file] {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+.color-preference {
+  top: -10px;
+  right: -40px;
+  display: flex;
+  position: absolute;
+}
+.color-preference summary {
+  display: inline-flex;
+}
+.color-preference .dropdown {
+  width: 210px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  right: 25px;
+  top: 25px;
+}
+.color-preference summary.color-choice {
+  background-color: var(--scheme-color);
+}
+.color-preference .dropdown .color-choice {
+  width: 40px;
+  height: 40px;
+  outline: none;
+  border-radius: 20px;
+}
+
+.color-selector {
+  background-color: black !important;
+  border: 1px dashed gray;
+}
+.color-selector:focus {
+  box-shadow: 0 0 20px var(--scheme-color);
+}
+.color-choice .default {
+  background: #aaff00;
+  border: none;
+}
+
+#logo {
+  opacity: 0;
+  transition: opacity .5s;
+}
+#canvas {
+  width: 100%;
+  height: 10px;
+}
+#reset {
+  display: none;
+  background-color: #FF0101;
+  position: absolute;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border: none;
+  color: white;
+  right: 0;
+  top: 0;
+}
+#reset.changed {
+  display: block;
+}
+#reset::before {
+  content: '';
+  position: absolute;
+  border-radius: 25px;
+  top: -10px;
+  left: -10px;
+  width: 43px;
+  height: 42px;
+}
+#disrupt,
+#trigger {
+  width: 6em;
+  height: 6em;
+  cursor: pointer;
+  border-radius: 5em;
+  border: none;
+  color: black;
+  background-color: var(--scheme-color);
+}
+#reset:focus,
+#disrupt:focus,
+#trigger:focus {
+  outline: none;
+  box-shadow: 0 0 20px var(--scheme-color);
+}
+#disrupt {
+  opacity: 0;
+  width: 100%;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+#disrupt.playing {
+  pointer-events: all;
+  opacity: 1;
+}
+
+input[type=range] {
+  width: 100%;
+  cursor: ew-resize;
+  border-radius: 20px;
+  background-color: #6FC5F0;
+  outline: none;
+}
+input[type=range]:focus {
+  box-shadow: 0 0 20px var(--scheme-color);
+}
+input[type=range]::-webkit-slider-runnable-track {
+  border: none;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, var(--scheme-color) 100%);
+}
+input[type=range]::-webkit-slider-thumb {
+  padding: 0;
+  height: 40px;
+  width: 20px;
+  border: none;
+  cursor: ew-resize;
+  background-color: white;
+  transform: rotate(5deg);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .5);
+}
+input[type=range],
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
